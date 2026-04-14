@@ -1,7 +1,7 @@
 import java.io.*;
 import java.util.*;
 
-public class A
+public class Main
 {
     public static void main(String[] args)throws IOException
     {
@@ -13,12 +13,31 @@ public class A
             int n=fr.nextInt();
             int[] h=fr.readintarray(n);
             int[] dp=new int[n+1];
-            Arrays.fill(dp, -1);
+            // Arrays.fill(dp, -1);
 
-            System.out.println(rec(0, dp, h));
+            // System.out.println(rec(0, dp, h));
+
+
+            //dp[i]=Math.min(abs(h[i]-h[i+1])+dp[i+1], abs(h[i]-h[i+2])+dp[i+2]);
+
+            dp[h.length-1]=0;
+            for(int i=h.length-2;i>=0;i--)
+            {
+                if(i==h.length-2)
+                    dp[i]=Math.abs(h[i]-h[i+1]);
+                else
+                {
+                    dp[i]=Math.min(
+                        Math.abs(h[i]-h[i+1])+dp[i+1],
+                        Math.abs(h[i]-h[i+2])+dp[i+2]
+                    );
+                }
+            }
+            System.out.println(dp[0]);
         }
     }
 
+    // Recursive implementation
     static int rec(int index, int[] dp, int[] h)
     {
         if(index>=h.length)
