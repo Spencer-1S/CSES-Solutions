@@ -10,7 +10,7 @@ public class FastReader {
     BufferedReader br;
     StringTokenizer st;
 
-    public void FastReader()
+    public FastReader()
     {
         BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st=new StringTokenizer(null);
