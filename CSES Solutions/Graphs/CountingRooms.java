@@ -2,6 +2,8 @@ import java.util.*;
 import java.io.*;
 
 public class CountingRooms {
+
+    static int[][] dirvec=new int[][]{{0,1},{0,-1},{1,0},{-1,0}};
     public static void main(String[] args)throws IOException {
 
         BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
@@ -22,7 +24,7 @@ public class CountingRooms {
                 {
                     if(!vis[i][j])
                     {
-                        bfs(i, j, grid, vis);
+                        dfs(i, j, grid, vis);
                         cnt++;
                     }
                 }
@@ -88,9 +90,34 @@ public class CountingRooms {
 
     }
 
+    // Iterative DFS (custom stack)
+    public static void dfs(int i, int j, char[][] grid, boolean[][] vis)
+    {
+        ArrayDeque<int[]> stack=new ArrayDeque<>();
+        stack.add(new int[]{i,j});
+        vis[i][j]=true;
+        while(!stack.isEmpty())
+        {
+            int[] cur=stack.pop();
+            for(int[] vector:dirvec)
+            {
+                int nexti=cur[0]+vector[0];
+                int nextj=cur[1]+vector[1];
+                if(nexti<grid.length && nextj<grid[0].length && nexti>=0 && nextj>=0)
+                {
+                    if(!vis[nexti][nextj] && grid[nexti][nextj]=='.')
+                    {
+                        vis[nexti][nextj]=true;
+                        stack.push(new int[]{nexti, nextj});
+                    }
+                }
+            }
+        }
+    }
+
+    
     public static void bfs(int i, int j, char[][] grid, boolean[][] vis)
     {
-        int[][] dirvec=new int[][]{{0,1},{0,-1},{1,0},{-1,0}};
         Queue<int[]> queue=new LinkedList<>();
         vis[i][j]=true;
         queue.add(new int[]{i,j});
