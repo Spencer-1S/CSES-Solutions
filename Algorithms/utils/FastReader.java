@@ -1,4 +1,4 @@
-package Algorithms.Sortings;
+package Algorithms.utils;
 
 import java.io.BufferedReader;
 import java.io.IOException;

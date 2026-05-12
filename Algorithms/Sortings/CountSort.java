@@ -2,6 +2,9 @@ package Algorithms.Sortings;
 import java.io.*;
 import java.util.*;
 
+import Algorithms.utils.FastReader;
+import Algorithms.utils.RandomInput;
+
 public class CountSort {
     public static void main(String[] args) {
         FastReader fr=new FastReader();
