@@ -1,2 +1,1 @@
-# CSES Solutions
-by Spencer
+Cp
