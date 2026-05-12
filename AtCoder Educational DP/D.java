@@ -33,7 +33,6 @@ public class D
     }
     
     // Recursive implementation
-    // static int rec(int index, int)
     
     static class FastReader{
         BufferedReader br;
